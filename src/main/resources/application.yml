@@ -1,0 +1,23 @@
+server:
+  port: 8020
+spring:
+  application:
+    name: account-manager
+  datasource:
+    url: jdbc:postgresql://localhost:5432/accounts
+    username: postgres
+    password: h4ckm3
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+#  profiles:
+#    active: dev
+#  cloud:
+#    config:
+#      label: master
+#  config:
+#    import: configserver:http://localhost:8021
