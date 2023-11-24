@@ -22,7 +22,7 @@ public class CuentaController {
     private CuentaService service;
 
     @PostMapping(path = "", produces = {MediaType.APPLICATION_JSON_VALUE })
-    public ResponseEntity<Cuenta> crea(
+    public ResponseEntity<CuentaResponse> crea(
             @Valid @RequestBody CuentaRequest request
     ){
         return new ResponseEntity<>(service.crea(request), HttpStatus.CREATED);

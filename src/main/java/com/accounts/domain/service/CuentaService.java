@@ -7,6 +7,6 @@ import com.accounts.domain.model.Cuenta;
 import java.util.List;
 
 public interface CuentaService {
-    Cuenta crea(CuentaRequest request);
+    CuentaResponse crea(CuentaRequest request);
     List<CuentaResponse> buscaTodo();
 }
