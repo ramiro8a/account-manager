@@ -5,6 +5,7 @@ import com.accounts.common.constants.ErrorMsg;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingRequestHeaderException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -31,6 +32,11 @@ public class RestExceptionHandler {
         logPrinter.write(ex);
         return buildResponseEntity(new ApiError(ex.getMensaje(),ex.getMensajeTec(), ex.getCodigo(), ex.getStatus()));
     }*/
+
+    @ExceptionHandler(AccessDeniedException.class)
+    protected ResponseEntity<Object> handleMethodAccessDeniedException(AccessDeniedException ex) {
+        return buildResponseEntity(new ApiError(ErrorMsg.FORBIDDEN.getCod(), ErrorMsg.FORBIDDEN.getMsj(), HttpStatus.FORBIDDEN));
+    }
 
     @ExceptionHandler(Exception.class)
     protected ResponseEntity<Object> handleMethodBadException(Exception ex) {

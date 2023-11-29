@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +23,7 @@ public class CuentaController {
     private CuentaService service;
 
     @PostMapping(path = "", produces = {MediaType.APPLICATION_JSON_VALUE })
+    //@PreAuthorize("hasAuthority('CREA_CLIENTE')")
     public ResponseEntity<CuentaResponse> crea(
             @Valid @RequestBody CuentaRequest request
     ){
